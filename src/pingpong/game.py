@@ -1,6 +1,6 @@
-from agent import Agent
-from ball import Ball
-from player import Player
+from .agent import Agent
+from .ball import Ball
+from .player import Player
 
 class Game:
     def __init__(self, screen_height, screen_width):
