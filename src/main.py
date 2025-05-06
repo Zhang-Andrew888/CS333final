@@ -1,14 +1,9 @@
 import pygame
 from pingpong.game import Game
+from configs.settings import HEIGHT, WHITE, WIDTH, WHITE, BLACK
 
 # Initialize pygame
 pygame.init()
-
-# vars
-HEIGHT = 500
-WIDTH = 800
-BLACK = (0,0,0)
-WHITE = (255, 255, 255)
 
 # set up display
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
