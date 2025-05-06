@@ -1,5 +1,6 @@
 from src.pingpong.player import Player
 import unittest
+from src.configs.settings import HEIGHT
 
 class testPlayer(unittest.TestCase):
     def test_Vars(self):
@@ -13,8 +14,7 @@ class testPlayer(unittest.TestCase):
         player = Player()
         y0 = player.pos_y
         key_input = ""
-        screen_height = 800
-        player.move(key_input, screen_height)
+        player.move(key_input, HEIGHT)
 
         self.assertEqual(player.pos_y, y0)
 
@@ -22,8 +22,7 @@ class testPlayer(unittest.TestCase):
         player = Player()
         y0 = player.pos_y
         key_input = "UP"
-        screen_height = 800
-        player.move(key_input, screen_height)
+        player.move(key_input, HEIGHT)
 
         self.assertEqual(player.pos_y, y0)
     
@@ -31,8 +30,7 @@ class testPlayer(unittest.TestCase):
         player = Player()
         player.pos_y = 799
         key_input = "DOWN"
-        screen_height = 800
-        player.move(key_input, screen_height)
+        player.move(key_input, HEIGHT)
 
         self.assertEqual(player.pos_y, 799)
     
@@ -40,8 +38,7 @@ class testPlayer(unittest.TestCase):
         player = Player()
         y0 = player.pos_y + player.increments
         key_input = "DOWN"
-        screen_height = 800
-        player.move(key_input, screen_height)
+        player.move(key_input, HEIGHT)
 
         self.assertEqual(player.pos_y, y0)
 
@@ -50,8 +47,7 @@ class testPlayer(unittest.TestCase):
         player.pos_y = 799
         y0 = player.pos_y - player.increments
         key_input = "UP"
-        screen_height = 800
-        player.move(key_input, screen_height)
+        player.move(key_input, HEIGHT)
 
         self.assertEqual(player.pos_y, y0)
 
