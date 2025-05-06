@@ -3,30 +3,31 @@ from src.pingpong.agent import Agent
 from src.pingpong.player import Player
 from src.pingpong.ball import Ball
 from src.pingpong.game import Game
+from src.configs.settings import HEIGHT, WIDTH
 
 class testGame(unittest.TestCase):
     def test_Vars(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
 
         self.assertFalse(game.gameActive)
-        self.assertEqual(game.screen_height, 800)
-        self.assertEqual(game.screen_width, 800)
+        self.assertEqual(game.screen_height, HEIGHT)
+        self.assertEqual(game.screen_width, WIDTH)
     
     def test_UpdateInactive(self):
-        game = Game(800, 800)
-        ball = Ball(800, 800)
+        game = Game(HEIGHT, WIDTH)
+        ball = Ball(HEIGHT, WIDTH)
         game.update("")
 
         self.assertFalse(game.gameActive)
         self.assertEqual(game.ball.coordinates, ball.coordinates)
     
     def test_updatePlayerMoveNoUp(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         player = Player()
-        player.move("UP", 800)
-        agent = Agent(800, 800)
-        agent.move(800)
-        ball = Ball(800, 800)
+        player.move("UP", HEIGHT)
+        agent = Agent(HEIGHT, WIDTH)
+        agent.move(HEIGHT)
+        ball = Ball(HEIGHT, WIDTH)
         ball.move()
 
         game.start_Game()
@@ -37,14 +38,14 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.ball.coordinates, ball.coordinates)
 
     def test_updatePlayerMoveUp(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         player = Player()
         player.pos_y = 400
-        player.move("UP", 800)
+        player.move("UP", HEIGHT)
         game.player.pos_y = 400
-        agent = Agent(800, 800)
-        agent.move(800)
-        ball = Ball(800, 800)
+        agent = Agent(HEIGHT, WIDTH)
+        agent.move(HEIGHT)
+        ball = Ball(HEIGHT, WIDTH)
         ball.move()
 
         game.start_Game()
@@ -55,14 +56,14 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.ball.coordinates, ball.coordinates)
 
     def test_updatePlayerMoveNoDown(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         player = Player()
-        player.pos_y = 800
-        player.move("DOWN", 800)
-        game.player.pos_y = 800
-        agent = Agent(800, 800)
-        agent.move(800)
-        ball = Ball(800, 800)
+        player.pos_y = HEIGHT
+        player.move("DOWN", HEIGHT)
+        game.player.pos_y = HEIGHT
+        agent = Agent(HEIGHT, WIDTH)
+        agent.move(HEIGHT)
+        ball = Ball(HEIGHT, WIDTH)
         ball.move()
 
         game.start_Game()
@@ -73,12 +74,12 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.ball.coordinates, ball.coordinates)
 
     def test_uupdatePlayerMoveDown(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         player = Player()
-        player.move("DOWN", 800)
-        agent = Agent(800, 800)
-        agent.move(800)
-        ball = Ball(800, 800)
+        player.move("DOWN", HEIGHT)
+        agent = Agent(HEIGHT, WIDTH)
+        agent.move(HEIGHT)
+        ball = Ball(HEIGHT, WIDTH)
         ball.move()
 
         game.start_Game()
@@ -89,12 +90,12 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.ball.coordinates, ball.coordinates)
     
     def test_updateNoInput(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         player = Player()
-        player.move("", 800)
-        agent = Agent(800, 800)
-        agent.move(800)
-        ball = Ball(800, 800)
+        player.move("", HEIGHT)
+        agent = Agent(HEIGHT, WIDTH)
+        agent.move(HEIGHT)
+        ball = Ball(HEIGHT, WIDTH)
         ball.move()
 
         game.start_Game()
@@ -105,9 +106,9 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.ball.coordinates, ball.coordinates)
     
     def test_updatePlayerWin(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         game.ball.coordinates = [800, 10]
-        ball = Ball(800, 800)
+        ball = Ball(HEIGHT, WIDTH)
 
         game.start_Game()
         game.update("DOWN")
@@ -117,9 +118,9 @@ class testGame(unittest.TestCase):
         self.assertFalse(game.gameActive)
     
     def test_updatePlayerLoss(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         game.ball.coordinates = [0, 500]
-        ball = Ball(800, 800)
+        ball = Ball(HEIGHT, WIDTH)
 
         game.start_Game()
         game.update("DOWN")
@@ -129,17 +130,17 @@ class testGame(unittest.TestCase):
         self.assertFalse(game.gameActive)  
 
     def test_reset_ball(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         game.start_Game()
         game.ball.coordinates = [100, 200]
-        ball = Ball(800, 800)
+        ball = Ball(HEIGHT, WIDTH)
         game.reset_ball()
 
         self.assertEqual(ball.coordinates, game.ball.coordinates)
         self.assertFalse(game.gameActive)
     
     def test_start_Game(self):
-        game = Game(800, 800)
+        game = Game(HEIGHT, WIDTH)
         game.start_Game()
 
         self.assertTrue(game.gameActive)
