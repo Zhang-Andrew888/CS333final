@@ -21,7 +21,7 @@ class testAgent(unittest.TestCase):
 
     def test_AgentChangeDirectionHigh(self):
         agent = Agent(HEIGHT, WIDTH)
-        agent.pos_y = 800
+        agent.pos_y = 500
         agent.direction = 1
         agent.move(HEIGHT)
 

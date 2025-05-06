@@ -8,8 +8,8 @@ class testBall(unittest.TestCase):
     def test_Var(self):
         ball = Ball(HEIGHT, WIDTH, direction=[1,1])
         
-        self.assertEqual(ball.coordinates[0], 400)
-        self.assertEqual(ball.coordinates[1], 400)
+        self.assertEqual(ball.coordinates[0], WIDTH / 2)
+        self.assertEqual(ball.coordinates[1], HEIGHT / 2)
         self.assertEqual(ball.radius, 10)
         self.assertEqual(ball.direction, [1,1])
     
