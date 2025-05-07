@@ -23,6 +23,7 @@ class Game:
 
             if(result == 1):
                 self.player.score += 1
+                self.agent.increments += 5 * self.player.score
                 self.reset_ball()
             elif(result == -1):
                 self.agent.score += 1
