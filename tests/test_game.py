@@ -73,7 +73,7 @@ class testGame(unittest.TestCase):
         self.assertEqual(game.agent.pos_y, agent.pos_y)
         self.assertEqual(game.ball.coordinates, ball.coordinates)
 
-    def test_uupdatePlayerMoveDown(self):
+    def test_updatePlayerMoveDown(self):
         game = Game(HEIGHT, WIDTH)
         player = Player()
         player.move("DOWN", HEIGHT)
