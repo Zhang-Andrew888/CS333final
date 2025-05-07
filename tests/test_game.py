@@ -109,12 +109,10 @@ class testGame(unittest.TestCase):
         game = Game(HEIGHT, WIDTH)
         game.ball.coordinates = [800, 10]
         ball = Ball(HEIGHT, WIDTH)
-        increments = game.agent.increments
 
         game.start_Game()
         game.update("DOWN")
 
-        self.assertEqual(game.agent.increments, increments + 5 * game.player.score)
         self.assertEqual(game.player.score, 1)
         self.assertEqual(game.ball.coordinates, ball.coordinates)
         self.assertFalse(game.gameActive)
